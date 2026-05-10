@@ -219,15 +219,15 @@ end
 
 PCore-B:
 config t
- __ ___
- ____ __
-  int __________
-    ____ __
-    ____ _____ _______ ___
+ ip cef
+ mpls ip
+  int e1/1
+  mpls ip
+    mpls label protocol ldp
     !mpls mtu override 1512 (apply only in most real devices)
-  int  __________
-    ____ __
-    ____ _____ _______ ___
+  int e1/2
+    mpls ip
+    mpls label protocol ldp
     ! mpls mtu override 1512 (apply only in most real devices)
 	end
 	
@@ -351,21 +351,21 @@ ip vrf clientBSPa
 ***
 PE-Z:
 config t
- ip vrf __________
-  __________
-  __________
- ip vrf __________
-  __________
-  __________
- ip vrf __________
-  __________
-  __________
-ip vrf __________
-  __________
-  __________
-ip vrf __________
-  __________
-  __________
+ ip vrf clientBDOb
+ rd 999:1
+ route-target 64999:1
+ ip vrf clientBPIb
+   rd 999:2
+   route-target 64999:2
+ ip vrf clientPNBb
+   rd 999:3
+  route-target 64999:3
+ip vrf clientBPOb
+  rd 888:4
+  route-target 69666:4
+ip vrf clientBSPb
+  rd 888:5
+  route-target 69666:5
   end
   
   
